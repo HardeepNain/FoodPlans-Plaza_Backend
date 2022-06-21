@@ -7,10 +7,12 @@ if (process.env.PASSWORD) {
 } else {
     PASSWORD = require("../secrets").PASSWORD;
 }
+// console.log("planModel:"+PASSWORD);
 
 const validator = require("email-validator");
-let dbLink
-    = `mongodb+srv://admin:${PASSWORD}@cluster0.3gwfq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+
+let dbLink = `mongodb+srv://firstproject:${PASSWORD}@cluster0.gdeii.mongodb.net/?retryWrites=true&w=majority`;
+
 mongoose
     .connect(dbLink)
     .then(function (connection) {
@@ -57,5 +59,5 @@ const planSchema = new mongoose.Schema({
 })
 
 // model
-let planModel = mongoose.model("PABPlanModel", planSchema);
+let planModel = mongoose.model("planModel", planSchema);
 module.exports = planModel;

@@ -7,9 +7,10 @@ if (process.env.PASSWORD) {
 } else {
     PASSWORD = require("../secrets").PASSWORD;
 }
+// console.log("bookingModel:" + PASSWORD);
 
-let dbLink
-    = `mongodb+srv://admin:${PASSWORD}@cluster0.3gwfq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+let dbLink = `mongodb+srv://firstproject:${PASSWORD}@cluster0.gdeii.mongodb.net/?retryWrites=true&w=majority`;
+
 mongoose.connect(dbLink, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

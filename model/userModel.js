@@ -7,12 +7,15 @@ if (process.env.PASSWORD) {
 } else {
     PASSWORD = require("../secrets").PASSWORD;
 }
-
 const validator = require("email-validator");
 // const bcrypt = require("bcrypt");
 
-let dbLink
-    = `mongodb+srv://admin:${PASSWORD}@cluster0.3gwfq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+// console.log("userModel Password:" + PASSWORD);
+// console.log("userModel process: " + process.env.PASSWORD);
+// console.log("userModel require: " + require("../secrets"));
+
+let dbLink = `mongodb+srv://firstproject:${PASSWORD}@cluster0.gdeii.mongodb.net/?retryWrites=true&w=majority`;
+
 mongoose
     .connect(dbLink)
     .then(function (connection) {
@@ -88,5 +91,5 @@ userSchema.methods.resetHandler = function (password, confirmPassword) {
     this.token = undefined;
 }
 // model
-let userModel = mongoose.model("PABUserModel", userSchema);
+let userModel = mongoose.model("userModel", userSchema);
 module.exports = userModel;

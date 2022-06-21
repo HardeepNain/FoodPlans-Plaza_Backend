@@ -7,9 +7,10 @@ if (process.env.PASSWORD) {
 } else {
     PASSWORD = require("../secrets").PASSWORD;
 }
+// console.log("reviewModel:"+PASSWORD);
 
-let dbLink
-    = `mongodb+srv://admin:${PASSWORD}@cluster0.3gwfq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+let dbLink = `mongodb+srv://firstproject:${PASSWORD}@cluster0.gdeii.mongodb.net/?retryWrites=true&w=majority`;
+
 mongoose.connect(dbLink, {
     useNewUrlParser: true,
 
@@ -38,12 +39,12 @@ const reviewSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.ObjectId,
         required: [true, "Review must belong to a user"],
-        ref:"PABUserModel"
+        ref:"userModel"
     },
     plan: {
         type: mongoose.Schema.ObjectId,
         required: [true, "Review must belong to a plan "],
-        ref:"PABPlanModel"
+        ref:"planModel"
     }
 })
 const ReviewModel = mongoose.model("reviewModel", reviewSchema);
